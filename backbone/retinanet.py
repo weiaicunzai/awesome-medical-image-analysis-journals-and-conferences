@@ -9,14 +9,17 @@ Author:baiyu
 
 import keras
 
+from config import settings
+#from .. import config
+
 #"""We use C = 256 and A = 9 in most experiments."""
-def classification_subnet(num_classes, 
-                        num_anchors=9,
-                        pryamid_feature_size=256,
-                        prior_probability=0.01,
-                        classification_feature_size=256,
-                        name='classification_subnet'):
-    
+def classification_subnet(
+    num_classes = settings.K,
+    num_anchors=settings.A,
+    pryamid_feature_size=settings.C,
+    prior_probability=0.01,
+    classification_feature_size=settings.C,
+    name='classification_subnet'):
     """clssification_subnet
 
     Args:
@@ -50,9 +53,16 @@ def classification_subnet(num_classes,
     for i in range(4):
         subnet.add(keras.layers.Conv2D(
             filters=classification_feature_size,
-            name='pyramid_classification_{}'.format(i),
+            name='classification_subnet_conv{}'.format(i),
             **options
         ))
+        subnet.add(keras.layers.BatchNormalization(
+            name='classification_subnet_bn{}'.format(i)
+        ))
+        subnet.add(keras.layers.Activation(
+            'relu',
+            name='classification_subnet_relu{}'.format(i)
+            ))
     subnet.add(keras.layers.Conv2D(
         filters=num_anchors * num_classes,
         **options
@@ -70,10 +80,68 @@ def classification_subnet(num_classes,
         name='pyramid_classification_sigmoid'
     ))
 
-    subnet.name = 'classification_subnet'
+    subnet.name = name
     return subnet
 
-subnet = classification_subnet(40, 40)
+def box_regression_subnet(
+    num_anchors=settings.A,
+    pyramid_feature_size=settings.C,
+    regression_feature_size=settings.C,
+    name='regression_subnet'):
+
+    """box_regression_subnet
+
+    Args:
+        num_anchors: Number of anchors for each feature level
+        pyramid_feauture_size: the number of filters to expect from pyramid features
+        regression_feature_size: the number of filters regression subnet use per layer
+        name: name of the subnet
+    
+    Returns:
+        a subnet Sequential() object
+    """
+    options = {
+        'kernel_size' : 3,
+        'strides' : 1,
+        'padding' : 'same',
+        'kernel_initializer' : 'he_normal',
+        'use_bias' : False
+    }
+
+    subnet = keras.models.Sequential()
+    subnet.add(keras.layers.InputLayer(input_shape=(None, None, pyramid_feature_size)))
+
+    #'''The design of the box regression subnet is identical to the
+    #classification subnet except that it terminates in 4A linear
+    #outputs per spatial location, see Figure 3 (d).'''
+    for i in range(4):
+        subnet.add(keras.layers.Conv2D(
+            filters=regression_feature_size,
+            name='regression_subnet_conv{}'.format(i),
+            **options
+        ))
+        subnet.add(keras.layers.BatchNormalization(
+            name='regression_subnet_bn{}'.format(i)
+        ))
+        subnet.add(keras.layers.Activation(
+            "relu",
+            name='regression_subnet_{}'.format(i)
+        ))
+
+    subnet.add(keras.layers.Conv2D(
+        num_anchors * 4,
+        name='pyramid_regression_{}'.format(i),
+        **options
+    ))
+    subnet.add(keras.layers.Reshape(
+        (-1, 4),
+        name='pyramid_regression_reshape'
+    ))
+
+    subnet.name = 'box_regression_subnet'
+    return subnet
+#subnet = classification_subnet(40, 40)
+subnet = box_regression_subnet()
 
 print(subnet.summary())
 
