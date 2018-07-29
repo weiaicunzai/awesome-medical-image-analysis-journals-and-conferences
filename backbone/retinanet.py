@@ -8,9 +8,9 @@ Author:baiyu
 """
 
 import keras
+import layers
 
 from config import settings
-#from .. import config
 
 #"""We use C = 256 and A = 9 in most experiments."""
 def classification_subnet(
@@ -140,8 +140,68 @@ def box_regression_subnet(
 
     subnet.name = 'box_regression_subnet'
     return subnet
+
+def _create_pyramid_features(C3, C4, C5, feature_size=settings.C):
+    """ Create FPN layers on top of the backbone features
+
+    Args:
+        C3: Feature stage of C3 from backbone
+        C4: Feature stage of C4 from backbone
+        C5: Featrue stage of C5 from backbone
+    
+    Retruens:
+        A list of feature level
+    """
+    options = {
+        'filter_size' : feature_size,
+        'strides' : 1,
+        'padding' : 'same'
+    }
+
+    M5 = keras.layers.Conv2D(kernel_size=1, name='C5_reduced', **options)(C5)
+    P5 = keras.layers.Conv2D(kernel_size=3, name='P5', **options)(M5)
+    M5_unsampled = layers.NearestNeighborUpsampling()[M5, M4]
+    M4 = keras.layers.Conv2D(
+        kernel_size=1,
+        name='C4_reduced',
+        **options
+    )(C4)
+    M4 = keras.layers.Add()([M4, M5_unsampled])
+
+    M3 = keras.layers.Conv2D(
+        kernel_size=1,
+        name='C4_reduced',
+        **options
+    )(C3)
+
+
+
+
+
+
+    P4_unsampled = layers.NearestNeighborUpsampling()[]
+    
+    P5 = layers.NearestNeighborUpsampling()([M5, C4])
+    
+
+#def retinanet(
+#
+#)
 #subnet = classification_subnet(40, 40)
 subnet = box_regression_subnet()
+import numpy as np
 
-print(subnet.summary())
+C1 = np.random.random((100, 16, 16, 256))
+C2 = np.random.random((100, 32, 32, 256))
+C3 = np.random.random((100, 32, 32, 256))
+
+
+y_train = keras.utils.to_categorical(np.random.randint(10, size=(1000, 1)), num_classes=10)
+
+from keras import backend as K
+
+_create_pyramid_features(K.variable(C1), K.variable(C2), K.variable(C3))
+import cProfile
+#cProfile.runctx('box_regression_subnet()', globals(), None)
+#print(subnet.summary())
 
