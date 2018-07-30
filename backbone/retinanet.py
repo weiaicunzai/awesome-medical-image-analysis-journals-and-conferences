@@ -153,47 +153,57 @@ def _create_pyramid_features(C3, C4, C5, feature_size=settings.C):
         A list of feature level
     """
     options = {
-        'filter_size' : feature_size,
+        'filters' : feature_size,
         'strides' : 1,
         'padding' : 'same'
     }
 
-    M5 = keras.layers.Conv2D(kernel_size=1, name='C5_reduced', **options)(C5)
-    P5 = keras.layers.Conv2D(kernel_size=3, name='P5', **options)(M5)
-    M5_unsampled = layers.NearestNeighborUpsampling()[M5, M4]
-    M4 = keras.layers.Conv2D(
-        kernel_size=1,
-        name='C4_reduced',
-        **options
-    )(C4)
-    M4 = keras.layers.Add()([M4, M5_unsampled])
+    #bottom-down path
 
-    M3 = keras.layers.Conv2D(
-        kernel_size=1,
-        name='C4_reduced',
-        **options
-    )(C3)
+    #perform 1x1 conv
+    M5 = keras.layers.Conv2D(kernel_size=1, name='C5_1x1', **options)(C5)
+    M4 = keras.layers.Conv2D(kernel_size=1, name='C4_1x1', **options)(C4)
+    M3 = keras.layers.Conv2D(kernel_size=1, name='C3_1x1', **options)(C3)
+
+    M5_upsampled = layers.Upsamplingx2(name='M5_x2')(M5)
+    #M5_upsampled = layers.UpsamplingSame(name='M5_x2')([M5, M4])
+    M4 = keras.layers.Add(name='M5_upsampled_M4_merge')([M5_upsampled, M4])
+
+    M4_upsampled = layers.Upsamplingx2()(M4)
+    #M4_upsampled = layers.UpsamplingSame()([M4, M3])
+    M3 = keras.layers.Add(name='M4_upsampled_M3_merge')([M4_upsampled, M3])
+
+    #get P5
+    P5 = keras.layers.Conv2D(kernel_size=3, name='M5_3x3', **options)(M5)
+    P4 = keras.layers.Conv2D(kernel_size=3, name='M4_3x3', **options)(M4)
+    P3 = keras.layers.Conv2D(kernel_size=3, name='M3_3x3', **options)(M3)
+
+    #"""P6 is obtained via a 3×3 stride-2 conv on C5"""
+    P6 = keras.layers.Conv2D(
+        feature_size, 
+        kernel_size=3, 
+        strides=2, 
+        padding='same',
+        name='P6')(C5)
+
+    #"""and P7 is computed by applying ReLU followed by a 3×3 stride-2 conv on P6."""
+    P7 = keras.layers.Activation('relu', name='P7_relu')(P6)
+    P7 = keras.layers.Conv2D(
+        feature_size,
+        kernel_size=3,
+        strides=2,
+        padding='same',
+        name='P7')(P7)
+
+    return [P3, P4, P5, P6, P7]
 
 
-
-
-
-
-    P4_unsampled = layers.NearestNeighborUpsampling()[]
-    
-    P5 = layers.NearestNeighborUpsampling()([M5, C4])
-    
-
-#def retinanet(
-#
-#)
-#subnet = classification_subnet(40, 40)
 subnet = box_regression_subnet()
 import numpy as np
 
-C1 = np.random.random((100, 16, 16, 256))
+C3 = np.random.random((100, 16, 16, 256))
 C2 = np.random.random((100, 32, 32, 256))
-C3 = np.random.random((100, 32, 32, 256))
+C1 = np.random.random((100, 64, 64, 256))
 
 
 y_train = keras.utils.to_categorical(np.random.randint(10, size=(1000, 1)), num_classes=10)

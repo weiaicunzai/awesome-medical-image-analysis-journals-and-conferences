@@ -1,1 +1,1 @@
-from .nn_upsample import NearestNeighborUpsampling
+from .nn_upsample import Upsamplingx2, UpsamplingSame
