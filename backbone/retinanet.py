@@ -141,6 +141,12 @@ def box_regression_subnet(
     subnet.name = 'box_regression_subnet'
     return subnet
 
+def default_submodels():
+
+    return [
+        ('regression', box_regression_subnet()),
+        ('classification', classification_subnet())
+    ]
 def _create_pyramid_features(C3, C4, C5, feature_size=settings.C):
     """ Create FPN layers on top of the backbone features
 
@@ -155,7 +161,8 @@ def _create_pyramid_features(C3, C4, C5, feature_size=settings.C):
     options = {
         'filters' : feature_size,
         'strides' : 1,
-        'padding' : 'same'
+        'padding' : 'same',
+        'use_bias' : False
     }
 
     #bottom-down path
@@ -184,6 +191,7 @@ def _create_pyramid_features(C3, C4, C5, feature_size=settings.C):
         kernel_size=3, 
         strides=2, 
         padding='same',
+        use_bias=False,
         name='P6')(C5)
 
     #"""and P7 is computed by applying ReLU followed by a 3×3 stride-2 conv on P6."""
@@ -193,10 +201,71 @@ def _create_pyramid_features(C3, C4, C5, feature_size=settings.C):
         kernel_size=3,
         strides=2,
         padding='same',
+        use_bias=False,
         name='P7')(P7)
 
     return [P3, P4, P5, P6, P7]
 
+class AnchorParameters:
+    
+    def __init__(self, sizes, strides, ratios, scales):
+        self.sizes = sizes
+        self.strides = strides
+        self.ratios = ratios
+        self.scales = scales
+    
+    def num_anchors(self):
+        return len(self.ratios) * len(self.scales)
+
+def _build_model_pyramid(name, model, features):
+    """concatenate subnet response for each kinds of subnet
+
+    Args:
+        name: output tensor name
+        model: subnet 
+        features: FPN features [P3, P4, P5, P6, P7]
+    
+    Returns:
+        concantenated tensor
+    """
+
+    return keras.layers.Concatenate(axis=1, name=name)([model(f) for f in features])
+
+def _build_pyramid(models, features):
+    """Apllies all submodels to each features
+
+    Args:
+        models: two subnets
+        features: [P3, P4, P5, P6, P7]
+    
+    Returnes:
+        2 tensors: concatenated regression subnet tensor and classification
+                   subnet tensor
+    """
+
+    return [_build_model_pyramid(n, m, features) for n, m in models]
+
+def _build_anchors(anchor_parameters, features):
+    
+def retinanet(
+    inputs,
+    backbone_layers,
+    num_classes=settings.K,
+    num_anchors=settings.A,
+    create_pyramid_features=_create_pyramid_features,
+    submodels=None,
+    name='retinanet'):
+
+    if submodels is None:
+        submodels = default_submodels()
+
+    features = create_pyramid_features(K.variable(C1), K.variable(C2), K.variable(C3))
+
+    #"""The object classification subnet and the box regression subnet, 
+    #though sharing a common structure, use separate parameters."""
+    pyramids = _build_pyramid(submodels, features)
+    for p in pyramids:
+        print(p)
 
 subnet = box_regression_subnet()
 import numpy as np
@@ -210,8 +279,9 @@ y_train = keras.utils.to_categorical(np.random.randint(10, size=(1000, 1)), num_
 
 from keras import backend as K
 
-_create_pyramid_features(K.variable(C1), K.variable(C2), K.variable(C3))
+#_create_pyramid_features(K.variable(C1), K.variable(C2), K.variable(C3))
 import cProfile
-#cProfile.runctx('box_regression_subnet()', globals(), None)
+#retinanet(1, 2)
+cProfile.runctx('retinanet(1, 2)', globals(), None)
 #print(subnet.summary())
 
