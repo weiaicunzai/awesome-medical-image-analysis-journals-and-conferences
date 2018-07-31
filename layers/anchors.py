@@ -1,6 +1,7 @@
 
 
 import keras
+import keras.backend as K
 import numpy as np
 
 from utils import anchors as utils_anchors
@@ -27,7 +28,7 @@ class Anchors(keras.layers.Layer):
             self.scales = np.array([2 ** 0, 2 ** (1.0 / 3.0), 2 ** (2.0 / 3.0)])
 
         self.num_anchors = len(self.ratios) * len(self.scales)
-        self.anchors = keras.backend.variable(utils_anchors.generate_anchors(
+        self.anchors = K.variable(utils_anchors.generate_anchors(
             base_size=self.size,
             ratios=self.ratios,
             scales=self.scales
@@ -35,8 +36,36 @@ class Anchors(keras.layers.Layer):
 
     def call(self, inputs, **kwargs):
         features = inputs
-        features_shape = keras.backend.
-a = Anchors(1, 1, name='ff')
-a.name='ff'
-#c = keras.layers.Conv2D(11, 3, name='ff')
-print(a)
+        features_shape = K.shape(features)[:3]
+    
+        anchors = utils_anchors.shift(features_shape[1:3], self.stride, self.anchors)
+        anchors = K.tile(K.expand_dims(anchors, axis=0), (features_shape[0], 1, 1))
+
+        return anchors
+    
+    def compute_output_shape(self, input_shape):
+        if None not in input_shape[1:]:
+            total = np.prod(input_shape[1:3]) * self.num_anchors
+            return (input_shape[0], total, 4)
+
+        else:
+            return (input_shape[0], None, 4)
+        
+    def get_config(self):
+        config = super().get_config()
+
+        #deep copy
+        config.update({
+            'size' : self.size,
+            'stride' : self.stride,
+            'ratios' : self.ratios.tolist(),
+            'scales' : self.scales.tolist(),
+        })
+
+        return config
+
+#a = Anchors(1, 1, name='ff')
+#print(a.get_config())
+#a.name='ff'
+##c = keras.layers.Conv2D(11, 3, name='ff')
+#print(a(K.variable(np.random.rand(2, 5, 5, 3))))

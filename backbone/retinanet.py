@@ -7,7 +7,9 @@
 Author:baiyu
 """
 
+import numpy as np
 import keras
+import keras.backend as K
 import layers
 
 from config import settings
@@ -147,6 +149,7 @@ def default_submodels():
         ('regression', box_regression_subnet()),
         ('classification', classification_subnet())
     ]
+
 def _create_pyramid_features(C3, C4, C5, feature_size=settings.C):
     """ Create FPN layers on top of the backbone features
 
@@ -181,9 +184,9 @@ def _create_pyramid_features(C3, C4, C5, feature_size=settings.C):
     M3 = keras.layers.Add(name='M4_upsampled_M3_merge')([M4_upsampled, M3])
 
     #get P5
-    P5 = keras.layers.Conv2D(kernel_size=3, name='M5_3x3', **options)(M5)
-    P4 = keras.layers.Conv2D(kernel_size=3, name='M4_3x3', **options)(M4)
-    P3 = keras.layers.Conv2D(kernel_size=3, name='M3_3x3', **options)(M3)
+    P5 = keras.layers.Conv2D(kernel_size=3, name='P5', **options)(M5)
+    P4 = keras.layers.Conv2D(kernel_size=3, name='P4', **options)(M4)
+    P3 = keras.layers.Conv2D(kernel_size=3, name='P3', **options)(M3)
 
     #"""P6 is obtained via a 3×3 stride-2 conv on C5"""
     P6 = keras.layers.Conv2D(
@@ -217,6 +220,16 @@ class AnchorParameters:
     def num_anchors(self):
         return len(self.ratios) * len(self.scales)
 
+"""
+The default anchor parameters.
+"""
+AnchorParameters.default = AnchorParameters(
+    sizes   = [32, 64, 128, 256, 512],
+    strides = [8, 16, 32, 64, 128],
+    ratios  = np.array([0.5, 1, 2], keras.backend.floatx()),
+    scales  = np.array([2 ** 0, 2 ** (1.0 / 3.0), 2 ** (2.0 / 3.0)], keras.backend.floatx()),
+)
+
 def _build_model_pyramid(name, model, features):
     """concatenate subnet response for each kinds of subnet
 
@@ -247,6 +260,9 @@ def _build_pyramid(models, features):
 
 def _build_anchors(anchor_parameters, features):
     
+
+
+    
 def retinanet(
     inputs,
     backbone_layers,
@@ -264,16 +280,27 @@ def retinanet(
     #"""The object classification subnet and the box regression subnet, 
     #though sharing a common structure, use separate parameters."""
     pyramids = _build_pyramid(submodels, features)
-    for p in pyramids:
-        print(p)
 
-subnet = box_regression_subnet()
-import numpy as np
+    return keras.models.Model(inputs=inputs, outputs=pyramids, name=name)
 
+def retinanet_bbox(
+    model=None,
+    anchor_parameters=AnchorParameters.default,
+    nms=True,
+    class_specific_filter=True,
+    name='retinanet_bbox',
+    **kwargs):
+
+    if model is None:
+        model = retinanet(num_anchors=anchor_parameters.num_anchors(), **kwargs)
+
+    features = [model.get_layer(l_name).output for l_name in ['P3', 'P4', 'P5', 'P6', 'P7']]
+    anchors = 
 C3 = np.random.random((100, 16, 16, 256))
 C2 = np.random.random((100, 32, 32, 256))
 C1 = np.random.random((100, 64, 64, 256))
 
+retinanet_bbox(inputs=1, backbone_layers=2)
 
 y_train = keras.utils.to_categorical(np.random.randint(10, size=(1000, 1)), num_classes=10)
 
