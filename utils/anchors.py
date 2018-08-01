@@ -19,10 +19,10 @@ def meshgrid(x, y):
     #dont use int_shape, this could return a 
     #dynamic shape e.g.(None,) instead of
     #consice number during runtime
-    if K.count_params(K.shape(x)) != 1:
+    if K.ndim(K.shape(x)) != 1:
         raise Exception('expected x to be 1D tensor')
     
-    if K.count_params(K.shape(y)) != 1:
+    if K.ndim(K.shape(y)) != 1:
         raise Exception('expected y to be 1D tensor')
     
     x_num = K.shape(x)[0]
@@ -112,6 +112,8 @@ def generate_anchors(base_size=16, ratios=None, scales=None):
     anchors[:, 1::2] -= np.tile(anchors[:, 3] * 0.5, (2, 1)).T
 
     return anchors
+
+    
 
 
     

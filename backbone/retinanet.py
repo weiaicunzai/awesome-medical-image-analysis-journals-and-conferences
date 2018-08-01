@@ -259,9 +259,30 @@ def _build_pyramid(models, features):
     return [_build_model_pyramid(n, m, features) for n, m in models]
 
 def _build_anchors(anchor_parameters, features):
-    
+    """ Builds anchors for the shape of the features from FPN.
+    Args
+        anchor_parameters : Parameteres that determine how anchors are generated.
+        features          : The FPN features.
+    Returns
+        A tensor containing the anchors for the FPN features.
+        The shape is:
+        ```
+        (batch_size, num_anchors, 4)
+        ```
+    """
 
+    anchors = [
+        layers.Anchors(
+            size=anchor_parameters.sizes[i],
+            stride=anchor_parameters.strides[i],
+            ratios=anchor_parameters.ratios,
+            scales=anchor_parameters.scales,
+            name='anchors_{}'.fommat(i)
+        )(f) for i, f in enumerate(features)
+    ]
 
+    #get all possible anchors
+    return keras.layers.Concatenate(axis=1, name='anchors')(anchors)
     
 def retinanet(
     inputs,
@@ -295,7 +316,23 @@ def retinanet_bbox(
         model = retinanet(num_anchors=anchor_parameters.num_anchors(), **kwargs)
 
     features = [model.get_layer(l_name).output for l_name in ['P3', 'P4', 'P5', 'P6', 'P7']]
-    anchors = 
+    anchors =  _build_anchors(anchor_parameters, features)
+
+    regression = model.outputs[0]
+    classification = model.outputs[1]
+
+    #this will be [] by default
+    #other = model.output[2:]
+
+    #apply predicted regression to anchors
+    boxes = layers.RegressBoxes(name='boxes')([anchors, regression])
+    boxes = layers.ClipBoxes(name='clipped_boxes')([model.inputs[0], boxes])
+
+    #apply NMS / score threshold / select top-k
+    detections = layers.FilterDetections(
+
+    )
+
 C3 = np.random.random((100, 16, 16, 256))
 C2 = np.random.random((100, 32, 32, 256))
 C1 = np.random.random((100, 64, 64, 256))
