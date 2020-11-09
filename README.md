@@ -52,6 +52,8 @@
 
 ## Conference
 
+**note: h5-index 20(±5) 约为CCF C 级别**
+
 <table>
     <tr align=center>
         <th>会议名字</th>
@@ -81,6 +83,11 @@
     <tr align=center>
         <td>SPIE Medical Imaging</td>
         <td>18</td>
+        <td>None</td>
+    </tr>
+    <tr align=center>
+        <td>IEEE Symposium on Computer-Based Medical Systems, SBMS</td>
+        <td>17</td>
         <td>None</td>
     </tr>
 </table>
