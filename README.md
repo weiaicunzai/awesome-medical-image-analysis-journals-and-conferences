@@ -4,48 +4,42 @@
 
 ## Journal
 
-### SCI
 <table>
     <tr align=center>
         <th>期刊名字</th>
         <th>2019-2020最新IF</th>
         <th>中科院SCI期刊分区</th>
         <th>h5-index</th>
+        <th>CCF分类</th>
     </tr>
     <tr align=center>
-        <td>IEEE Journal of Biomedical and Health Informatics</td>
+        <td>IEEE Journal of Biomedical and Health Informatics, J-BHI</td>
         <td>5.223</td>
         <td>工程技术 2区</td>
         <td>69</td>
+        <td>None</td>
     </tr>
     <tr align=center>
         <td>NEURAL NETWORKS</td>
         <td>5.5353</td>
         <td>计算机科学 2区</td>
         <td>64</td>
+        <td>B</td>
     </tr>
     <tr align=center>
         <td>ARTIFICIAL INTELLIGENCE IN MEDICINE</td>
         <td>4.383</td>
         <td>工程技术 2区</td>
         <td>39</td>
-    </tr>
-
-</table>
-
-### CCF
-
-<table>
-    <tr align=center>
-        <th>期刊名字</th>
-        <th>CCF分类</th>
-        <th>h5-index</th>
+        <td>None</td>
     </tr>
     <tr align=center>
-        <td>NEURAL NETWORKS</td>
+        <td>IEEE TRANSACTIONS ON MEDICAL IMAGING, TMI</td>
+        <td>6.685</td>
+        <td>工程技术 1区</td>
+        <td>85</td>
         <td>B</td>
-        <td>64</td>
-    </tr>
+
 </table>
 
 ## Conference
@@ -54,17 +48,26 @@
     <tr align=center>
         <th>会议名字</th>
         <th>h5-index</th>
+        <th>CCF分类</th>
     </tr>
     <tr align=center>
-        <th>International Conference on Medical Image Computing and Computer Assisted Intervention, MICCAI</th>
-        <th>61</th>
+        <td>International Conference on Medical Image Computing and Computer Assisted Intervention, MICCAI</td>
+        <td>61</td>
+        <td>None</td>
     </tr>
     <tr align=center>
-        <th>International Conference of the IEEE Engineering in Medicine and Biology Society, EMBC</th>
-        <th>39</th>
+        <td>International Conference of the IEEE Engineering in Medicine and Biology Society, EMBC</td>
+        <td>39</td>
+        <td>None</td>
     </tr>
     <tr align=center>
-        <th>IEEE International Symposium on Biomedical Imaging: From Nano to Macro, ISBI</th>
-        <th>43</th>
+        <td>IEEE International Symposium on Biomedical Imaging: From Nano to Macro, ISBI</td>
+        <td>43</td>
+        <td>None</td>
+    </tr>
+    <tr align=center>
+        <td>IEEE/CVF Conference on Computer Vision and Pattern Recognition, CVPR</td>
+        <td>299</td>
+        <td>A</td>
     </tr>
 </table>
