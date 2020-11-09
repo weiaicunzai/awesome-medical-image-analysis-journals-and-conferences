@@ -39,6 +39,14 @@
         <td>工程技术 1区</td>
         <td>85</td>
         <td>B</td>
+    </tr>
+    <tr align=center>
+        <td>GASTROENTEROLOGY</td>
+        <td>17.373</td>
+        <td>医学 1区</td>
+        <td>148</td>
+        <td>None</td>
+    </tr>
 
 </table>
 
