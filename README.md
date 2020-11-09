@@ -78,4 +78,9 @@
         <td>299</td>
         <td>A</td>
     </tr>
+    <tr align=center>
+        <td>SPIE Medical Imaging</td>
+        <td>18</td>
+        <td>None</td>
+    </tr>
 </table>
