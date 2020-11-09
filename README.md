@@ -95,4 +95,9 @@
         <td>35</td>
         <td>C</td>
     </tr>
+    <tr align=center>
+        <td>British Machine Vision Conference, BMVC</td>
+        <td>57</td>
+        <td>C</td>
+    </tr>
 </table>
