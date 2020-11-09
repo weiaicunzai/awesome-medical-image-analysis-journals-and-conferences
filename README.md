@@ -52,7 +52,7 @@
 
 ## Conference
 
-**note: h5-index 20(±5) 约为CCF C 级别**
+**note: h5-index 20(±5) 约为CCF C 级别, 但是CCF C并不全是 20左右**
 
 <table>
     <tr align=center>
@@ -89,5 +89,10 @@
         <td>IEEE Symposium on Computer-Based Medical Systems, SBMS</td>
         <td>17</td>
         <td>None</td>
+    </tr>
+    <tr align=center>
+        <td>International Conference on Pattern Recognition, ICPR</td>
+        <td>35</td>
+        <td>C</td>
     </tr>
 </table>
