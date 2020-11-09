@@ -47,8 +47,14 @@
 <table>
     <tr align=center>
         <th>期刊名字</th>
+        <th>h5-index</th>
     </tr>
     <tr align=center>
         <th>International Conference on Medical Image Computing and Computer Assisted Intervention</th>
+        <th>61</th>
+    </tr>
+    <tr align=center>
+        <th>International Conference of the IEEE Engineering in Medicine and Biology Society, EMBC</th>
+        <th>39</th>
     </tr>
 </table>
