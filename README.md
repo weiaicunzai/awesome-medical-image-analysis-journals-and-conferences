@@ -54,6 +54,13 @@
         <td>67</td>
         <td>B</td>
     </tr>
+    <tr align=center>
+        <td>IEEE TRANSACTIONS ON BIOMEDICAL ENGINEERING</td>
+        <td>4.424</td>
+        <td>工程技术 2区</td>
+        <td>75</td>
+        <td>None</td>
+    </tr>
 
 </table>
 
