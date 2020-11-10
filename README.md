@@ -80,6 +80,11 @@
         <td>None</td>
     </tr>
     <tr align=center>
+        <td>International Workshop on Machine Learning in Medical Imaging</td>
+        <td>19</td>
+        <td>None</td>
+    </tr>
+    <tr align=center>
         <td>International Conference of the IEEE Engineering in Medicine and Biology Society, EMBC</td>
         <td>39</td>
         <td>None</td>
