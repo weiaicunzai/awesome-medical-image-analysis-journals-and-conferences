@@ -138,6 +138,13 @@
         <td>28</td>
         <td>None</td>
     </tr>
+    <tr align=center>
+        <td>Computerized medical imaging and graphics</td>
+        <td>3.75</td>
+        <td>工程技术 3区</td>
+        <td>40</td>
+        <td>None</td>
+    </tr>
 
 </table>
 
