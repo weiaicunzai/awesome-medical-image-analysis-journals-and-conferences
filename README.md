@@ -103,6 +103,13 @@
         <td>133</td>
         <td>None</td>
     </tr>
+    <tr align=center>
+        <td>Pattern Recognition</td>
+        <td>7.196</td>
+        <td>计算机科学 1区</td>
+        <td>85</td>
+        <td>B</td>
+    </tr>
 
 </table>
 
