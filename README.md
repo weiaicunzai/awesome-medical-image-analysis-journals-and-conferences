@@ -68,6 +68,13 @@
         <td>36</td>
         <td>None</td>
     </tr>
+    <tr align=center>
+        <td>IEEE Access</td>
+        <td>3.745</td>
+        <td>计算机科学 2区</td>
+        <td>119</td>
+        <td>None</td>
+    </tr>
 
 </table>
 
