@@ -48,7 +48,7 @@
         <td>None</td>
     </tr>
     <tr align=center>
-        <td>MEDICAL IMAGE ANALYSIS, TMI</td>
+        <td>MEDICAL IMAGE ANALYSIS</td>
         <td>11.148</td>
         <td>工程技术 2区</td>
         <td>67</td>
