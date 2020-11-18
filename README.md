@@ -117,6 +117,13 @@
         <td>113</td>
         <td>A</td>
     </tr>
+    <tr align=center>
+        <td>American Journal of Neuroradiology</td>
+        <td>3.381</td>
+        <td>医学 2区</td>
+        <td>58</td>
+        <td>None</td>
+    </tr>
 
 </table>
 
