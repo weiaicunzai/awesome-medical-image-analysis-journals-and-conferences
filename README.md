@@ -61,6 +61,13 @@
         <td>75</td>
         <td>None</td>
     </tr>
+    <tr align=center>
+        <td>Insights into Imaging</td>
+        <td>3.579</td>
+        <td>None</td>
+        <td>36</td>
+        <td>None</td>
+    </tr>
 
 </table>
 
