@@ -82,6 +82,20 @@
         <td>93</td>
         <td>None</td>
     </tr>
+    <tr align=center>
+        <td>Journal of the American College of Radiology</td>
+        <td>4.268</td>
+        <td>医学 2区</td>
+        <td>40</td>
+        <td>None</td>
+    </tr>
+    <tr align=center>
+        <td>IEEE Transactions on Neural Networks and Learning Systems, TNNLS</td>
+        <td>8.793</td>
+        <td>计算机科学 1区</td>
+        <td>107</td>
+        <td>B</td>
+    </tr>
 
 </table>
 
