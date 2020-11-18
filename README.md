@@ -20,42 +20,42 @@
         <td>None</td>
     </tr>
     <tr align=center>
-        <td>NEURAL NETWORKS</td>
+        <td>Neural Networks</td>
         <td>5.5353</td>
         <td>计算机科学 2区</td>
         <td>64</td>
         <td>B</td>
     </tr>
     <tr align=center>
-        <td>ARTIFICIAL INTELLIGENCE IN MEDICINE</td>
+        <td>Artificial Intelligence in Medicine</td>
         <td>4.383</td>
         <td>工程技术 2区</td>
         <td>39</td>
         <td>None</td>
     </tr>
     <tr align=center>
-        <td>IEEE TRANSACTIONS ON MEDICAL IMAGING, TMI</td>
+        <td>IEEE Transactions on Medical Imaging, TMI</td>
         <td>6.685</td>
         <td>工程技术 1区</td>
         <td>85</td>
         <td>B</td>
     </tr>
     <tr align=center>
-        <td>GASTROENTEROLOGY</td>
+        <td>Gastroenterology</td>
         <td>17.373</td>
         <td>医学 1区</td>
         <td>148</td>
         <td>None</td>
     </tr>
     <tr align=center>
-        <td>MEDICAL IMAGE ANALYSIS</td>
+        <td>Medical Image Analysis</td>
         <td>11.148</td>
         <td>工程技术 2区</td>
         <td>67</td>
         <td>B</td>
     </tr>
     <tr align=center>
-        <td>IEEE TRANSACTIONS ON BIOMEDICAL ENGINEERING</td>
+        <td>IEEE Transactions on Biomedical Engineering</td>
         <td>4.424</td>
         <td>工程技术 2区</td>
         <td>75</td>
