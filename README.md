@@ -96,6 +96,13 @@
         <td>107</td>
         <td>B</td>
     </tr>
+    <tr align=center>
+        <td>Clinical Cancer Research</td>
+        <td>10.107</td>
+        <td>医学 1区</td>
+        <td>133</td>
+        <td>None</td>
+    </tr>
 
 </table>
 
