@@ -75,6 +75,13 @@
         <td>119</td>
         <td>None</td>
     </tr>
+    <tr align=center>
+        <td>Radiology</td>
+        <td>7.931</td>
+        <td>医学 1区</td>
+        <td>93</td>
+        <td>None</td>
+    </tr>
 
 </table>
 
