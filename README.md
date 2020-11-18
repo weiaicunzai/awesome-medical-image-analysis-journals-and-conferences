@@ -124,6 +124,20 @@
         <td>58</td>
         <td>None</td>
     </tr>
+    <tr align=center>
+        <td>Medical Physics</td>
+        <td>3.317</td>
+        <td>医学 3区</td>
+        <td>63</td>
+        <td>None</td>
+    </tr>
+    <tr align=center>
+        <td>Journal of Medical Imaging</td>
+        <td>None</td>
+        <td>None</td>
+        <td>28</td>
+        <td>None</td>
+    </tr>
 
 </table>
 
