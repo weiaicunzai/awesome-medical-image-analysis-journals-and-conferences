@@ -110,6 +110,13 @@
         <td>85</td>
         <td>B</td>
     </tr>
+    <tr align=center>
+        <td>IEEE Transactions on Image Processing, TIP</td>
+        <td>9.34</td>
+        <td>计算机科学 1区</td>
+        <td>113</td>
+        <td>A</td>
+    </tr>
 
 </table>
 
