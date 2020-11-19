@@ -52,7 +52,7 @@
         <td>11.148</td>
         <td>工程技术 2区</td>
         <td>67</td>
-        <td>B</td>
+        <td>None</td>
     </tr>
     <tr align=center>
         <td>IEEE Transactions on Biomedical Engineering</td>
