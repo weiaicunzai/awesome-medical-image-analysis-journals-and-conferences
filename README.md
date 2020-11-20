@@ -1,6 +1,9 @@
 
-# 医学图像相关期刊会议
+# Awesome - Medical Image Analysis Journals And Conferences(医学图像相关期刊会议)
 
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+
+A curated list of Medical Image Analysis related Journals and Conferences, If you don't speak Chinese, it's ok, since all you need is H5-index and IF(2019-2020最新IF) which both are written in numbers, other columns are just two Chinese academic rating systems, CCF(China Computer Federation) and 中科院SCI期刊分区.
 
 ## Journal
 
