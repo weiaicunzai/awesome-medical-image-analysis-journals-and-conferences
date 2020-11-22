@@ -206,4 +206,8 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>57</td>
         <td>C</td>
     </tr>
+    <tr align=center>
+        <td>Conference on Medical Image Understanding and Analysis (MIUA)</td>
+        <td>13</td>
+        <td>None</td>
 </table>
