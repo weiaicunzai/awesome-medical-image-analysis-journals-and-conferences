@@ -188,7 +188,7 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
     </tr>
     <tr align=center>
         <td>SPIE Medical Imaging</td>
-        <td>18</td>
+        <td>28</td>
         <td>None</td>
     </tr>
     <tr align=center>
