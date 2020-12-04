@@ -16,7 +16,7 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <th>CCF分类</th>
     </tr>
     <tr align=center>
-        <td>IEEE Journal of Biomedical and Health Informatics, J-BHI</td>
+        <td>IEEE Journal of Biomedical and Health Informatics, JBHI</td>
         <td>5.223</td>
         <td>工程技术 2区</td>
         <td>69</td>
@@ -30,11 +30,11 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>B</td>
     </tr>
     <tr align=center>
-        <td>Artificial Intelligence in Medicine</td>
+        <td>Artificial Intelligence in Medicine, AIM</td>
         <td>4.383</td>
         <td>工程技术 2区</td>
         <td>39</td>
-        <td>None</td>
+        <td>C</td>
     </tr>
     <tr align=center>
         <td>IEEE Transactions on Medical Imaging, TMI</td>
