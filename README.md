@@ -20,7 +20,7 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>5.223</td>
         <td>工程技术 2区</td>
         <td>69</td>
-        <td>None</td>
+        <td>C</td>
     </tr>
     <tr align=center>
         <td>Neural Networks</td>
