@@ -148,6 +148,13 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>40</td>
         <td>None</td>
     </tr>
+    <tr align=center>
+        <td>IEEE Transactions on Cybernetics</td>
+        <td>11.079</td>
+        <td>计算机科学 1区</td>
+        <td>81</td>
+        <td>B</td>
+    </tr>
 
 </table>
 
@@ -210,4 +217,5 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>Conference on Medical Image Understanding and Analysis (MIUA)</td>
         <td>13</td>
         <td>None</td>
+    </tr>
 </table>
