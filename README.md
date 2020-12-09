@@ -162,6 +162,13 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>38</td>
         <td>None</td>
     </tr>
+    <tr align=center>
+        <td>Computer Vision and Image Understanding, CVIU</td>
+        <td>3.121</td>
+        <td>计算机科学 3区</td>
+        <td>50</td>
+        <td>B</td>
+    </tr>
 
 </table>
 
