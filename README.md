@@ -230,4 +230,9 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>13</td>
         <td>None</td>
     </tr>
+    <tr align=center>
+        <td>IEEE International Conference on Bioinformatics and Biomedicine, BIBM</td>
+        <td>25</td>
+        <td>B</td>
+    </tr>
 </table>
