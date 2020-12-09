@@ -155,6 +155,13 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>81</td>
         <td>B</td>
     </tr>
+    <tr align=center>
+        <td>Ultrasonics</td>
+        <td>3.065</td>
+        <td>物理与天体物理 2区</td>
+        <td>38</td>
+        <td>None</td>
+    </tr>
 
 </table>
 
@@ -172,6 +179,11 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>International Conference on Medical Image Computing and Computer Assisted Intervention, MICCAI</td>
         <td>61</td>
         <td>None</td>
+    </tr>
+    <tr align=center>
+        <td>IEEE International Conference on Acoustics, Speech and Signal Processing, ICASSP</td>
+        <td>86</td>
+        <td>B</td>
     </tr>
     <tr align=center>
         <td>International Workshop on Machine Learning in Medical Imaging</td>
