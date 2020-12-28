@@ -169,6 +169,13 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>50</td>
         <td>B</td>
     </tr>
+    <tr align=center>
+        <td>The Journal of Machine Learning Research</td>
+        <td>3.484</td>
+        <td>计算机科学 3区</td>
+        <td>82</td>
+        <td>A</td>
+    </tr>
 
 </table>
 
