@@ -242,4 +242,9 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>25</td>
         <td>B</td>
     </tr>
+    <tr align=center>
+        <td>International Conference on Information processing in medical imaging, IPMI</td>
+        <td>23</td>
+        <td>None</td>
+    </tr>
 </table>
