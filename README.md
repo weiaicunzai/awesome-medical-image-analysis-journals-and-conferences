@@ -195,6 +195,11 @@ A curated list of Medical Image Analysis related Journals and Conferences, If yo
         <td>None</td>
     </tr>
     <tr align=center>
+        <td>International Conference on Artificial Intelligence and Statistics, AISTATS</td>
+        <td>57</td>
+        <td>C</td>
+    </tr>
+    <tr align=center>
         <td>IEEE International Conference on Acoustics, Speech and Signal Processing, ICASSP</td>
         <td>86</td>
         <td>B</td>
